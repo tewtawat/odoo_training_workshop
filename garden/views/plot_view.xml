@@ -100,11 +100,13 @@
 
     <menuitem id="parent_menu_garden"
               name="Garden"
+              groups="base.group_user"
     />
 
     <menuitem id="menu_garden"
               name="My garden"
               parent="parent_menu_garden"
               action="garden_form_action"
+              groups="base.group_user"
     />
 </odoo>

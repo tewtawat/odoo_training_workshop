@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_plot,access_plot,model_plot,base.group_user,1,1,1,0
+access_plot_slot,access_plot_slot,model_plot_slot,base.group_user,1,1,1,0
+access_gardener,access_gardener,model_gardener,base.group_user,1,1,1,0
