@@ -9,6 +9,7 @@
     """,
 
     'data': [
+        'security/ir.model.access.csv',
         'views/plot_view.xml',
     ],
 
