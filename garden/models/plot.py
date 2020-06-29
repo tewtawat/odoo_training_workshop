@@ -36,4 +36,3 @@ class Plot(models.Model):
         column2='gardener_id',
         string='Gardener'
     )
-
