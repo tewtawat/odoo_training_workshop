@@ -7,7 +7,7 @@ class Gardener(models.Model):
 
     name = fields.Char(string='Gardener Name')
 
-    plot_ids = Many2many(
+    plot_ids = fields.Many2many(
         'plot',
         string='Plot'
     )

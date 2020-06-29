@@ -29,7 +29,7 @@ class Plot(models.Model):
         string="Slot",
     )
 
-    gardener_ids = Many2many(
+    gardener_ids = fields.Many2many(
         comodel_name='gardener',
         relation='plot_gardener_rel',
         column1='plot_id',
