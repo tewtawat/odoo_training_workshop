@@ -3,7 +3,7 @@ from odoo import models, fields
 
 class Slot(models.Model):
     _name = 'plot.slot'
-    _description = 'Plot Slot'
+    _description = 'Slot in plot\'s garden'
 
     name = fields.Char(string='Slot number')
 
