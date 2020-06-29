@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="plot_form_view" model="ir.ui.view">
+        <field name="name">plot.form.view</field>
+        <field name="model">plot</field>
+        <field name="arch" type="xml">
+            <form string="Plot Form">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="is_organic"/>
+                        </group>
+                        <group>
+                            <field name="cycle_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Slot">
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="slot_count"/>
+                                    </group>
+                                </group>
+                                <field name="slot_ids">
+                                    <tree string="Slot list">
+                                        <field name="name"/>
+                                        <field name="is_empty"/>
+                                        <field name="date_expire"/>
+                                    </tree>
+                                </field>
+                            </sheet>
+                        </page>
+                        <page string="Gardener">
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="gardener_ids"
+                                           widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                        />
+                                    </group>
+                                </group>
+                            </sheet>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="plot_tree_view" model="ir.ui.view">
+        <field name="name">plot.tree.view</field>
+        <field name="model">plot</field>
+        <field name="arch" type="xml">
+            <tree string="Plot list">
+                <field name="name"/>
+                <field name="is_organic"/>
+                <field name="cycle_count"/>
+                <field name="slot_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="plot_serach_view" model="ir.ui.view">
+        <field name="name">plot.search.view</field>
+        <field name="model">plot</field>
+        <field name="arch" type="xml">
+            <search string="Search Plot">
+                <field name="name"/>
+                <separator/>
+                <filter name="organic" string="Organic Garden"
+                        domain="[('is_organic','=', True)]">
+                </filter>
+                <group expand="0" string="Group By...">
+                    <filter name="name" string="Slot"
+                            icon="fa-user"
+                            domain="[]"
+                            context="{'group_by':'slot_count'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="garden_form_action" model="ir.actions.act_window">
+            <field name="name">Plot</field>
+            <field name="res_model">plot</field>
+            <field name="res_id" ref="plot_form_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="plot_serach_view"/>
+            <field name="view_id" ref="plot_tree_view"/>
+        </record>
+
+    <menuitem id="parent_menu_garden"
+              name="Garden"
+    />
+
+    <menuitem id="menu_garden"
+              name="My garden"
+              parent="parent_menu_garden"
+              action="garden_form_action"
+    />
+</odoo>

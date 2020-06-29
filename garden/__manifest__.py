@@ -9,6 +9,7 @@
     """,
 
     'data': [
+        'views/plot_view.xml',
     ],
 
     'application': True,
