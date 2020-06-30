@@ -4,6 +4,7 @@ from odoo.exceptions import ValidationError
 
 class Plot(models.Model):
     _name = 'plot'
+    _inherit = ['mail.thread']
     _description = 'Garden plot'
 
     _sql_constraints = [
@@ -12,7 +13,10 @@ class Plot(models.Model):
          "The plot number must be unique"),
     ]
 
-    name = fields.Char(string='Plot number')
+    name = fields.Char(
+        string='Plot number',
+        track_visibility='onchange',
+    )
 
     is_organic = fields.Boolean(
         string='Is Organic Garden',
