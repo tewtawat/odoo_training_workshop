@@ -1,7 +1,7 @@
 {
     'name': "Garden",
     'version': '1.0',
-    'depends': ['base', 'portal'],
+    'depends': ['base', 'mail'],
     'author': "Tewtawat C., Trinity Roots",
     'category': 'Tools',
     'description': """
