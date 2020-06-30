@@ -62,7 +62,6 @@
                 <field name="name"/>
                 <field name="is_organic"/>
                 <field name="cycle_count"/>
-                <field name="slot_count"/>
             </tree>
         </field>
     </record>

@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Plot(models.Model):
@@ -20,8 +20,28 @@ class Plot(models.Model):
 
     slot_count = fields.Integer(
         string="Slot Count",
-        default=0,
+        compute='_compute_slot_count',
+        inverse='_inverse_slot',
     )
+
+    @api.depends('slot_ids')
+    def _compute_slot_count(self):
+        for rec in self:
+            rec.slot_count = len(rec.slot_ids.filtered(
+                lambda slot: slot.is_empty
+            ))
+
+    def _inverse_slot(self):
+        slot_id = self.env['plot.slot']
+        for rec in self:
+            slot_count = len(rec.slot_ids.filtered(
+                lambda slot: slot.is_empty
+            ))
+            if rec.slot_count > slot_count:
+                rec.slot_ids = [
+                    slot_id.create({'name': 'n/a'}).id
+                    for i in range(rec.slot_count - slot_count)
+                ]
 
     slot_ids = fields.One2many(
         comodel_name="plot.slot",
