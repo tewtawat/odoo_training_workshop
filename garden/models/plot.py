@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 
 class Plot(models.Model):
     _name = 'plot'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Garden plot'
 
     _sql_constraints = [
