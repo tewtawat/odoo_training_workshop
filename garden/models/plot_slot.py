@@ -21,3 +21,8 @@ class Slot(models.Model):
         comodel_name='plot',
         string="Plot"
     )
+
+    plot_name = fields.Char(
+        related='plot_id.name',
+        string='Plot number'
+    )
