@@ -1,9 +1,16 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class Plot(models.Model):
     _name = 'plot'
     _description = 'Garden plot'
+
+    _sql_constraints = [
+        ('name_unique',
+         'UNIQUE(name)',
+         "The plot number must be unique"),
+    ]
 
     name = fields.Char(string='Plot number')
 
@@ -56,3 +63,11 @@ class Plot(models.Model):
                     slot_id.create({'name': 'n/a'}).id
                     for i in range(rec.slot_count - slot_count)
                 ]
+
+    @api.constrains('name')
+    def _check_name(self):
+        for rec in self:
+            if rec.name and rec.name[:1] in ('A', 'E', 'I', 'O', 'U'):
+                raise ValidationError(
+                    "Plot Number can't not start with vowels."
+                )
