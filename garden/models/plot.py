@@ -24,6 +24,20 @@ class Plot(models.Model):
         inverse='_inverse_slot',
     )
 
+    slot_ids = fields.One2many(
+        comodel_name="plot.slot",
+        inverse_name="plot_id",
+        string="Slot",
+    )
+
+    gardener_ids = fields.Many2many(
+        comodel_name='gardener',
+        relation='plot_gardener_rel',
+        column1='plot_id',
+        column2='gardener_id',
+        string='Gardener'
+    )
+
     @api.depends('slot_ids')
     def _compute_slot_count(self):
         for rec in self:
@@ -42,17 +56,3 @@ class Plot(models.Model):
                     slot_id.create({'name': 'n/a'}).id
                     for i in range(rec.slot_count - slot_count)
                 ]
-
-    slot_ids = fields.One2many(
-        comodel_name="plot.slot",
-        inverse_name="plot_id",
-        string="Slot",
-    )
-
-    gardener_ids = fields.Many2many(
-        comodel_name='gardener',
-        relation='plot_gardener_rel',
-        column1='plot_id',
-        column2='gardener_id',
-        string='Gardener'
-    )
