@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="module_garden" model="ir.module.category">
+            <field name="name">Garden</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <record id="group_garden_user" model="res.groups">
+            <field name="name">Garden User</field>
+            <field name="category_id" ref="garden.module_garden"/>
+        </record>
+
+        <record id="group_garden_manager" model="res.groups">
+            <field name="name">Garden Manager</field>
+            <field name="category_id" ref="garden.module_garden"/>
+            <field name="implied_ids"
+                   eval="[(4, ref('garden.group_garden_user'))]"/>
+        </record>
+    </data>
+</odoo>

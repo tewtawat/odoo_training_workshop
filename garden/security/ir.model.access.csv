@@ -1,4 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_plot,access_plot,model_plot,base.group_user,1,1,1,0
-access_plot_slot,access_plot_slot,model_plot_slot,base.group_user,1,1,1,0
-access_gardener,access_gardener,model_gardener,base.group_user,1,1,1,0
+access_plot,plot,model_plot,garden.group_garden_user,1,1,1,0
+access_plot_slot,plot.slot,model_plot_slot,garden.group_garden_user,1,1,1,0
+access_gardener,gardener,model_gardener,garden.group_garden_user,1,1,1,0
+access_plot_manager,plot.manager,model_plot,garden.group_garden_manager,1,1,1,1
+access_plot_slot_manager,plot.slot.manager,model_plot_slot,garden.group_garden_manager,1,1,1,1
+access_gardener_manager,gardener.manager,model_gardener,garden.group_garden_manager,1,1,1,1
