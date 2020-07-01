@@ -89,10 +89,9 @@
     </record>
 
     <record id="garden_form_action" model="ir.actions.act_window">
-            <field name="name">Plot</field>
-            <field name="res_model">plot</field>
-            <field name="search_view_id" ref="plot_serach_view"/>
-        </record>
+        <field name="name">Plot</field>
+        <field name="res_model">plot</field>
+    </record>
 
     <menuitem id="parent_menu_garden"
               name="Garden"
