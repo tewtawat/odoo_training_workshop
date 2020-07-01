@@ -9,6 +9,7 @@
     """,
 
     'data': [
+        'security/garden_security.xml',
         'security/ir.model.access.csv',
         'views/plot_view.xml',
     ],
