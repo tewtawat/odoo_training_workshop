@@ -26,3 +26,18 @@ class Slot(models.Model):
         related='plot_id.name',
         string='Plot number'
     )
+
+    is_blue = fields.Boolean(
+        string='Blue',
+        default=True
+    )
+
+    is_yellow = fields.Boolean(
+        string='Yellow',
+        default=True
+    )
+
+    is_green = fields.Boolean(
+        string='Green',
+        default=True
+    )

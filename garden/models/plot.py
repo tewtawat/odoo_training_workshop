@@ -49,6 +49,14 @@ class Plot(models.Model):
         string='Gardener'
     )
 
+    state = fields.Selection(
+        selection=[
+            ('draft', 'Draft'),
+            ('process', 'In Process')
+        ],
+        default="draft"
+    )
+
     @api.depends('slot_ids')
     def _compute_slot_count(self):
         for rec in self:
@@ -71,3 +79,11 @@ class Plot(models.Model):
                 raise ValidationError(
                     "Plot Number can't not start with vowels."
                 )
+
+    @api.multi
+    def button_process(self):
+        pass
+
+    @api.multi
+    def button_status(self):
+        pass
