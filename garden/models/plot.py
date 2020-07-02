@@ -52,16 +52,12 @@ class Plot(models.Model):
     @api.depends('slot_ids')
     def _compute_slot_count(self):
         for rec in self:
-            rec.slot_count = len(rec.slot_ids.filtered(
-                lambda slot: slot.is_empty
-            ))
+            rec.slot_count = len(rec.slot_ids.filtered('is_empty'))
 
     def _inverse_slot(self):
         slot_id = self.env['plot.slot']
         for rec in self:
-            slot_count = len(rec.slot_ids.filtered(
-                lambda slot: slot.is_empty
-            ))
+            slot_count = len(rec.slot_ids.filtered('is_empty'))
             if rec.slot_count > slot_count:
                 rec.slot_ids = [
                     slot_id.create({'name': 'n/a'}).id
