@@ -1,7 +1,7 @@
 {
     'name': "Garden",
     'version': '1.0',
-    'depends': ['base', 'portal'],
+    'depends': ['base', 'mail', 'contacts'],
     'author': "Tewtawat C., Trinity Roots",
     'category': 'Tools',
     'description': """
@@ -12,6 +12,7 @@
         'security/garden_security.xml',
         'security/ir.model.access.csv',
         'views/plot_view.xml',
+        'views/partner_form_view.xml',
     ],
 
     'application': True,

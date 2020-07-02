@@ -101,7 +101,7 @@
 
     <menuitem id="parent_menu_garden"
               name="Garden"
-              groups="base.group_user"
+              groups="garden.group_garden_user"
               icon="fa-tasks"
               web_icon="garden,static/description/icon.png"
     />
@@ -109,7 +109,13 @@
     <menuitem id="menu_garden"
               name="My garden"
               parent="parent_menu_garden"
+              groups="garden.group_garden_user"
+    />
+
+    <menuitem id="menu_garden_plot"
+              name="Plot"
+              parent="menu_garden"
               action="garden_form_action"
-              groups="base.group_user"
+              groups="garden.group_garden_user"
     />
 </odoo>

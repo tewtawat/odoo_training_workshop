@@ -42,10 +42,10 @@ class Plot(models.Model):
     )
 
     gardener_ids = fields.Many2many(
-        comodel_name='gardener',
-        relation='plot_gardener_rel',
+        comodel_name='res.partner',
+        relation='plot_partner_rel',
         column1='plot_id',
-        column2='gardener_id',
+        column2='partner_id',
         string='Gardener'
     )
 
@@ -67,7 +67,7 @@ class Plot(models.Model):
     @api.constrains('name')
     def _check_name(self):
         for rec in self:
-            if rec.name and rec.name[:1] in ('A', 'E', 'I', 'O', 'U'):
+            if rec.name and rec.name[:1].upper() in ('A', 'E', 'I', 'O', 'U'):
                 raise ValidationError(
                     "Plot Number can't not start with vowels."
                 )
