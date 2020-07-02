@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class Slot(models.Model):
@@ -29,15 +29,19 @@ class Slot(models.Model):
 
     is_blue = fields.Boolean(
         string='Blue',
-        default=True
     )
 
     is_yellow = fields.Boolean(
         string='Yellow',
-        default=True
     )
 
     is_green = fields.Boolean(
+        compute='_compute_is_green',
         string='Green',
-        default=True
+        store=True
     )
+
+    @api.depends('is_yellow', 'is_blue')
+    def _compute_is_green(self):
+        for rec in self:
+            rec.is_green = rec.is_blue and rec.is_yellow

@@ -82,8 +82,18 @@ class Plot(models.Model):
 
     @api.multi
     def button_process(self):
-        pass
+        for rec in self:
+            rec.state = 'process'
 
     @api.multi
     def button_status(self):
-        pass
+        self.ensure_one()
+        action = self.env.ref('garden.action_plot_status_wizard').read()[0]
+        action['res_id'] = self.env['plot.status.wizard'].create({
+            'plot_id': self.id,
+            'wiz_slot_ids': [
+                (0, 0, {'slot_id': slot_id.id,})
+                for slot_id in self.slot_ids
+            ]
+        }).id
+        return action
