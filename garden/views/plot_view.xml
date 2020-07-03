@@ -22,6 +22,7 @@
                     <group>
                         <group>
                             <field name="is_organic"/>
+                            <field name="show_available"/>
                         </group>
                         <group>
                             <field name="cycle_count"/>
@@ -35,10 +36,10 @@
                                         <field name="slot_count"/>
                                     </group>
                                 </group>
-                                <field name="slot_ids">
+                                <field name="slot_ids" >
                                     <tree string="Slot list" editable="bottom"
                                           decoration-success="is_green"
-                                          decoration-it="is_blue"
+                                          decoration-bg-danger="is_blue"
                                           decoration-muted="is_yellow"
 
                                     >
@@ -94,6 +95,7 @@
         <field name="arch" type="xml">
             <search string="Search Plot">
                 <field name="name"/>
+                <field name="gardener_ids" filter_domain="[('gardener_ids', 'ilike', self)]"/>
                 <separator/>
                 <filter name="organic" string="Organic Garden"
                         domain="[('is_organic','=', True)]">

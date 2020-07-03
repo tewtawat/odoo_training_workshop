@@ -46,7 +46,8 @@ class Plot(models.Model):
         relation='plot_partner_rel',
         column1='plot_id',
         column2='partner_id',
-        string='Gardener'
+        domain=[('is_gardener', '=', True)],
+        string='Gardener',
     )
 
     state = fields.Selection(
