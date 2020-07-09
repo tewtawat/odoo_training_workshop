@@ -46,7 +46,6 @@ class Plot(models.Model):
         relation='plot_partner_rel',
         column1='plot_id',
         column2='partner_id',
-        domain=[('is_gardener', '=', True)],
         string='Gardener',
     )
 
@@ -93,7 +92,7 @@ class Plot(models.Model):
         action['res_id'] = self.env['plot.status.wizard'].create({
             'plot_id': self.id,
             'wiz_slot_ids': [
-                (0, 0, {'slot_id': slot_id.id,})
+                (0, 0, {'slot_id': slot_id.id})
                 for slot_id in self.slot_ids
             ]
         }).id

@@ -22,7 +22,6 @@
                     <group>
                         <group>
                             <field name="is_organic"/>
-                            <field name="show_available"/>
                         </group>
                         <group>
                             <field name="cycle_count"/>
