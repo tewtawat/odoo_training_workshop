@@ -46,6 +46,7 @@ class Plot(models.Model):
         relation='plot_partner_rel',
         column1='plot_id',
         column2='partner_id',
+        domain=[('is_gardener', '=', True)],
         string='Gardener',
     )
 
