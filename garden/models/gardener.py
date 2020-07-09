@@ -9,5 +9,8 @@ class Gardener(models.Model):
 
     plot_ids = fields.Many2many(
         'plot',
+        'plot_partner_rel',
+        'partner_id',
+        'plot_id',
         string='Plot'
     )
