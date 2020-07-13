@@ -94,7 +94,6 @@
         <field name="arch" type="xml">
             <search string="Search Plot">
                 <field name="name"/>
-                <field name="gardener_ids" filter_domain="[('gardener_ids', 'ilike', self)]"/>
                 <separator/>
                 <filter name="organic" string="Organic Garden"
                         domain="[('is_organic','=', True)]">
