@@ -17,19 +17,5 @@
             <field name="implied_ids"
                    eval="[(4, ref('garden.group_garden_user'))]"/>
         </record>
-
-        <record id="plot_rule_user" model="ir.rule">
-            <field name="name">Plot User Rule</field>
-            <field name="model_id" ref="model_plot"/>
-            <field name="groups" eval="[(4, ref('garden.group_garden_user'))]"/>
-            <field name="domain_force">[('gardener_ids', 'in', user.partner_id.id)]</field>
-        </record>
-
-        <record id="plot_rule_manager" model="ir.rule">
-            <field name="name">Plot Manager Rule</field>
-            <field name="model_id" ref="model_plot"/>
-            <field name="groups" eval="[(4, ref('garden.group_garden_manager'))]"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-        </record>
     </data>
 </odoo>
