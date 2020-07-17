@@ -27,21 +27,3 @@ class Slot(models.Model):
         string='Plot number'
     )
 
-    is_blue = fields.Boolean(
-        string='Blue',
-    )
-
-    is_yellow = fields.Boolean(
-        string='Yellow',
-    )
-
-    is_green = fields.Boolean(
-        compute='_compute_is_green',
-        string='Green',
-        store=True
-    )
-
-    @api.depends('is_yellow', 'is_blue')
-    def _compute_is_green(self):
-        for rec in self:
-            rec.is_green = rec.is_blue and rec.is_yellow

@@ -13,7 +13,6 @@
         'security/ir.model.access.csv',
         'views/plot_view.xml',
         'views/partner_form_view.xml',
-        'wizard/plot_status_wizard.xml'
     ],
 
     'application': True,
