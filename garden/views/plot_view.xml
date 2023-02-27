@@ -96,7 +96,6 @@
     <menuitem id="parent_menu_garden"
               name="Garden"
               groups="base.group_user"
-              icon="fa-tasks"
               web_icon="garden,static/description/icon.png"
     />
 
